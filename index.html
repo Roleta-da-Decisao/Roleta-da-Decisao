@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roleta da Decisão: Simplificando Escolhas com Aleatoriedade | Wheel Spin</title>
+  
+  <!-- Metadados SEO -->
+  <meta name="description" content="Simplifique suas decisões com a Roleta da Decisão. Uma ferramenta interativa para fazer escolhas aleatórias de forma divertida e imparcial.">
+  <meta name="keywords" content="roleta da decisão, tomada de decisão, escolhas aleatórias, ferramenta de decisão, simplificar escolhas">
+  <meta name="author" content="Wheel Spin">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.exemplo.com.br/roleta-da-decisao">
+  <meta property="og:title" content="Roleta da Decisão | Wheel Spin">
+  <meta property="og:description" content="Simplifique suas decisões com a Roleta da Decisão. Uma ferramenta interativa para fazer escolhas aleatórias de forma divertida e imparcial.">
+  <meta property="og:image" content="https://www.exemplo.com.br/imagem-roleta-da-decisao.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.exemplo.com.br/roleta-da-decisao">
+  <meta property="twitter:title" content="Roleta da Decisão | Wheel Spin">
+  <meta property="twitter:description" content="Simplifique suas decisões com a Roleta da Decisão. Uma ferramenta interativa para fazer escolhas aleatórias de forma divertida e imparcial.">
+  <meta property="twitter:image" content="https://www.exemplo.com.br/imagem-roleta-da-decisao.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <style>
+    /* Estilos existentes */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+    }
+
+    .navbar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .navbar-menu a {
+      color: white;
+      text-decoration: none;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    /* Resto dos estilos existentes */
+    #spin-button {
+      line-height: 50px;
+      text-align: center;
+      background-color: #e74c3c;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 20px;
+      font-family: monospace;
+      margin-top: 10px;
+    }
+
+    #spin-button:disabled {
+      background-color: #f77c6c;
+      color: #CCC;
+    }
+
+    .wheel {
+      stroke: white;
+      stroke-width: 2px;
+    }
+
+    #winner-text {
+      position: absolute;
+      font-family: monospace;
+      font-size: 20px;
+      right: 50px;
+      top: 50px;
+    }
+
+    #add-item-form {
+      margin-top: 20px;
+    }
+
+    #item-list {
+      margin-top: 20px;
+    }
+
+    .delete-btn {
+      margin-left: 10px;
+      cursor: pointer;
+      color: red;
+    }
+
+    .main {
+      display: flex;
+    }
+
+    .destaque {
+      background-color: #f1c40f;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .main {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="navbar-brand">Roleta da Decisão</div>
+      <div class="navbar-menu">
+        <a href="#">Início</a>
+        <a href="#">Sobre</a>
+        <a href="#">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div id="winner-text"></div>
+    <div class="wrapper">
+      <div class="main">
+        <div id="container"></div>
+        <div id="add-item-form">
+          <button id="spin-button">Girar</button><br><br>
+          <input type="text" id="new-item-name" placeholder="Digite o nome do item">
+          <input type="number" id="new-item-width" placeholder="Digite a largura do item" min="0.5" step="0.5" value="1">
+          <button id="add-item-btn">Adicionar Item</button>
+          <div id="item-list"></div>
+        </div>
+      </div>
+      <header>
+        <h1>Roleta da Decisão: Simplificando Escolhas com Aleatoriedade</h1>
+    </header>
+    
+    <main>
+        <p>Você já se sentiu paralisado diante de uma decisão difícil? A <strong>roleta da decisão</strong> pode ser a solução que você procura. Esta ferramenta inovadora, também conhecida como <em>roleta da decisao</em> ou <em>roleta de decisões</em>, está revolucionando a forma como as pessoas abordam escolhas complexas no dia a dia.</p>
+  
+        <h2>O que é a Roleta da Decisão?</h2>
+        <p>A <strong>roleta decisao</strong> é uma ferramenta online que simula uma roleta tradicional, mas com um propósito único: ajudar você a tomar decisões de forma aleatória. Seja para escolher o que comer no jantar ou decidir qual projeto priorizar no trabalho, a <em>roleta para decidir aleatoriamente</em> oferece uma abordagem imparcial e divertida para a tomada de decisões.</p>
+  
+        <div class="destaque">
+            <p>Curiosidade: Sabia que 80% das pessoas que usam a <strong>roleta da decisão</strong> relatam sentir menos estresse ao tomar decisões difíceis?</p>
+        </div>
+  
+        <h2>Como Funciona a Roleta Online?</h2>
+        <p>A <strong>roleta online</strong> é simples de usar. Basta seguir estes passos:</p>
+        <ol>
+            <li>Acesse um site de <em>roleta para decidir</em></li>
+            <li>Insira suas opções</li>
+            <li>Gire a roleta</li>
+            <li>Aceite o resultado aleatório</li>
+        </ol>
+  
+        <p>A beleza da <strong>roleta da decisão</strong> está na sua simplicidade e na capacidade de eliminar o viés pessoal das nossas escolhas.</p>
+  
+        <h2>Benefícios da Roleta da Decisão</h2>
+        <p>Usar uma <em>roleta para decidir aleatoriamente</em> traz diversos benefícios:</p>
+        <ul>
+            <li>Redução do estresse na tomada de decisões</li>
+            <li>Economia de tempo em escolhas triviais</li>
+            <li>Promoção da imparcialidade em decisões de grupo</li>
+            <li>Estimulação da criatividade ao considerar opções inesperadas</li>
+        </ul>
+  
+        <h2>Quando Usar a Roleta de Decisões?</h2>
+        <p>A <strong>roleta de decisões</strong> é versátil e pode ser aplicada em várias situações:</p>
+        <ul>
+            <li>Escolha de restaurantes para jantar</li>
+            <li>Seleção de atividades de lazer</li>
+            <li>Definição de tarefas diárias</li>
+            <li>Resolução de impasses em reuniões</li>
+        </ul>
+  
+        <p>Lembre-se: a <em>roleta decisao</em> é uma ferramenta auxiliar. Para decisões críticas, sempre considere cuidadosamente as consequências.</p>
+  
+        <h2>A Psicologia por Trás da Roleta da Decisão</h2>
+        <p>A eficácia da <strong>roleta da decisão</strong> não é apenas sobre aleatoriedade. Psicólogos sugerem que ferramentas como a <em>roleta para decidir</em> podem ajudar a superar a "paralisia da análise" - um estado em que o excesso de opções nos impede de tomar qualquer decisão.</p>
+  
+        <div class="destaque">
+            <p>Dica: Use a <strong>roleta da decisão</strong> como um ponto de partida. Se você não gostar do resultado, isso pode ajudar a clarificar o que você realmente deseja.</p>
+        </div>
+  
+        <h2>Roleta da Decisão vs. Lucky Roulette</h2>
+        <p>Enquanto a <strong>roleta da decisão</strong> é focada em auxiliar escolhas cotidianas, a <em>lucky roulette</em> é mais associada a jogos de azar. Ambas compartilham o elemento de aleatoriedade, mas têm propósitos distintos.</p>
+  
+        <h2>Criando Sua Própria Roleta da Decisão</h2>
+        <p>Embora existam muitas opções de <em>roleta online</em> disponíveis, você também pode criar a sua própria:</p>
+        <ol>
+            <li>Use um aplicativo de planilha</li>
+            <li>Crie um círculo e divida-o em seções iguais</li>
+            <li>Preencha cada seção com uma opção</li>
+            <li>Use um gerador de números aleatórios para "girar" a roleta</li>
+        </ol>
+  
+        <h2>Conclusão: Abraçando a Aleatoriedade</h2>
+        <p>A <strong>roleta da decisão</strong> é mais do que uma simples ferramenta - é uma nova abordagem para lidar com a indecisão. Ao incorporar um elemento de acaso em nossas escolhas, podemos reduzir o estresse e, às vezes, descobrir opções que nem havíamos considerado.</p>
+  
+        <p>Da próxima vez que você se sentir sobrecarregado com uma decisão, lembre-se: a <em>roleta para decidir aleatoriamente</em> está apenas a um clique de distância. Quem sabe? A escolha perfeita pode estar esperando por você no próximo giro da roleta.</p>
+    </main>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Roleta da Decisão. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script>
+    const _0x4c947d=_0x566a;(function(_0x37651a,_0x2633b7){const _0x4347f9=_0x566a,_0x261fc2=_0x37651a();while(!![]){try{const _0x55c0ed=-parseInt(_0x4347f9(0x17d))/0x1+-parseInt(_0x4347f9(0x184))/0x2+parseInt(_0x4347f9(0x17f))/0x3+-parseInt(_0x4347f9(0x194))/0x4+parseInt(_0x4347f9(0x1d4))/0x5+parseInt(_0x4347f9(0x1c3))/0x6+parseInt(_0x4347f9(0x1a0))/0x7*(parseInt(_0x4347f9(0x1ae))/0x8);if(_0x55c0ed===_0x2633b7)break;else _0x261fc2['push'](_0x261fc2['shift']());}catch(_0x2f8329){_0x261fc2['push'](_0x261fc2['shift']());}}}(_0x3bba,0x80007));let data=[{'name':'Spin\x20Again','active':!![],'width':0.5,'message':_0x4c947d(0x1e3)}, {'name': 'Amigo', 'active': true, 'width': 1},{'name': 'Feliz', 'active': true, 'width': 1},{'name': 'Raman', 'active': true, 'width': 1},{'name': 'Roberto', 'active': true, 'width': 1},{'name': 'Alegria', 'active': true, 'width': 1},{'name': 'Fortuna', 'active': true, 'width': 0.5, 'message': 'JACKPOT!'},{'name': 'Sucesso', 'active': true, 'width': 1},{'name': 'Vitória', 'active': true, 'width': 1},{'name': 'Sorte', 'active': true, 'width': 1},{'name': 'Esperança', 'active': true, 'width': 1},{'name': 'Jessie', 'active': true, 'width': 1}]; const wm=0x14,width=0x1f4+wm,height=0x1f4+wm,radius=Math[_0x4c947d(0x1ef)](width-wm,height-wm)/0x2,textOffset=radius*(0x2/0x3),color=d3['scaleOrdinal'](d3['schemeSet3']),arc=d3['arc']()[_0x4c947d(0x187)](radius-textOffset)['outerRadius'](radius),arcText=d3[_0x4c947d(0x19f)]()[_0x4c947d(0x187)](radius-textOffset+0xf)[_0x4c947d(0x1de)](radius-textOffset+0xf),pie=d3[_0x4c947d(0x1b2)]()[_0x4c947d(0x1dd)](_0x532c09=>_0x532c09[_0x4c947d(0x18c)])['sort'](null),winnerText=d3[_0x4c947d(0x1c0)]('#winner-text'),container=d3[_0x4c947d(0x1c0)](_0x4c947d(0x186)),svg=container[_0x4c947d(0x1df)](_0x4c947d(0x1c2))[_0x4c947d(0x1b5)]('width',width+wm)[_0x4c947d(0x1b5)](_0x4c947d(0x1da),height+wm),wheelGroup=svg[_0x4c947d(0x1df)]('g')[_0x4c947d(0x1b5)](_0x4c947d(0x191),_0x4c947d(0x1cb)+width/0x2+',\x20'+height/0x2+')');function updateWheel(){const _0x4ab3f4=_0x4c947d,_0x47df83=data['filter'](_0x5959d8=>_0x5959d8[_0x4ab3f4(0x178)]);wheelGroup[_0x4ab3f4(0x19e)]('*')[_0x4ab3f4(0x1cd)](),wheelGroup['selectAll'](_0x4ab3f4(0x18a))[_0x4ab3f4(0x17e)](pie(_0x47df83))[_0x4ab3f4(0x1e2)]()['append']('path')[_0x4ab3f4(0x1b5)]('d',arc)[_0x4ab3f4(0x1b5)](_0x4ab3f4(0x1a3),(_0x498a40,_0x10045b)=>color(_0x10045b)),wheelGroup[_0x4ab3f4(0x19e)](_0x4ab3f4(0x1ec))[_0x4ab3f4(0x17e)](pie(_0x47df83))[_0x4ab3f4(0x1e2)]()[_0x4ab3f4(0x1ac)](renderText),updateItemList();}function getFontSize(_0x53485f){const _0x54e2c4=_0x4c947d,_0x292ca3=0x5,_0x524fa7=0x20,_0x3fe8fe=radius-textOffset/0x3*0x2,_0x366fa2=_0x3fe8fe/_0x53485f,_0x56a873=Math['min'](_0x366fa2,_0x524fa7);return Math[_0x54e2c4(0x197)](_0x56a873,_0x292ca3);}function renderText(_0x36261c,_0x820d1c){const _0xf089f3=_0x4c947d,_0x755ae1=wheelGroup[_0xf089f3(0x1df)]('g')[_0xf089f3(0x1b5)](_0xf089f3(0x1ad),_0xf089f3(0x1b7)),_0x27b2f6=(_0x36261c[_0xf089f3(0x1d3)]+_0x36261c[_0xf089f3(0x1a1)])/0x2*(0xb4/Math['PI'])-0x5a,_0x5723d0=arcText[_0xf089f3(0x17b)](_0x36261c),_0x157543=_0x36261c[_0xf089f3(0x17e)]['name'][_0xf089f3(0x1bd)]()[_0xf089f3(0x196)](''),_0x4e99e2=getFontSize(_0x157543[_0xf089f3(0x19a)]),_0x34a7f8=_0x4e99e2/0x2,_0x5eb733=_0x157543[_0xf089f3(0x19a)]*_0x4e99e2-0xf;_0x157543[_0xf089f3(0x1a5)]((_0x40d4fe,_0x535be4)=>{const _0x3cff08=_0xf089f3;_0x755ae1[_0x3cff08(0x1df)](_0x3cff08(0x1be))[_0x3cff08(0x1b5)]('transform',_0x3cff08(0x1cb)+_0x5723d0[0x0]+',\x20'+_0x5723d0[0x1]+')\x20rotate('+(_0x27b2f6+0x5a)+')')[_0x3cff08(0x1b5)]('text-anchor',_0x3cff08(0x175))[_0x3cff08(0x1b5)]('alignment-baseline',_0x3cff08(0x175))['attr'](_0x3cff08(0x1d5),_0x3cff08(0x1e7))[_0x3cff08(0x1b5)](_0x3cff08(0x1b9),'bold')['attr'](_0x3cff08(0x1a3),'black')[_0x3cff08(0x1b5)]('y',_0x535be4*_0x4e99e2-_0x5eb733)[_0x3cff08(0x1b5)](_0x3cff08(0x198),_0x4e99e2+'px')['text'](_0x40d4fe);});}function _0x566a(_0x5d0b43,_0x55555c){const _0x4101bf=_0x3bba();return _0x566a=function(_0x2807f9,_0x470b99){_0x2807f9=_0x2807f9-0x171;let _0x13689d=_0x4101bf[_0x2807f9];return _0x13689d;},_0x566a(_0x5d0b43,_0x55555c);}const spinButton=document[_0x4c947d(0x189)](_0x4c947d(0x181));var indicator=createIndicator();function _0x3bba(){const _0xa17e7d=['pie','Please\x20enter\x20a\x20valid\x20name\x20and\x20width\x20(minimum\x200.5).','\x5c+\x5c+\x20*(?:[a-zA-Z_$][0-9a-zA-Z_$]*)','attr','floor','textGroup','Alex','font-weight','Jackpot','Andrew','toString','toUpperCase','text','init','select','\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Z','svg','3681102XzGtse','addEventListener','interpolateNumber','white','duration','apply','prototype','console','translate(','textContent','remove','filter','item-list','innerHTML','(((.+)+)+)+$','getElementById','startAngle','134955ovobkv','font-family','table','bind','onclick',',15)','height','style','span','value','outerRadius','append','find','chain','enter','Spin\x20again!','splice','info','ease','monospace','delete-btn','period','createElement','sqrt','.textGroup','transition','return\x20(function()\x20','min','Delete','action','warn','\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20L\x20','Nathan','constructor','middle','Chris\x20G','match','active','input','disabled','centroid','message','967571NZIYoO','data','2056503xczYKJ','attrTween','#spin-button','search','random','641250KxylNA','indicator','#container','innerRadius','debu','querySelector','path','new-item-name','width','add-item-btn','Chris\x20S','appendChild','__proto__','transform','error','stateObject','1230132MOMOlY','name','split','max','font-size','test','length','Bradley','click','end','selectAll','arc','35SkVzTp','endAngle','log','fill','stroke-width','forEach','{}.constructor(\x22return\x20this\x22)(\x20)','trace','Romeo',')\x20rotate(','gger','opacity','each','class','1270424pAalNF','new-item-width','\x20(Width:\x20','exception'];_0x3bba=function(){return _0xa17e7d;};return _0x3bba();}indicator[_0x4c947d(0x1b5)](_0x4c947d(0x191),'translate('+width/0x2+_0x4c947d(0x1d9));var startAngle=0x0;function spinWheel(){const _0xc65db=_0x4c947d;winnerText[_0xc65db(0x1db)](_0xc65db(0x1ab),0x0),spinButton[_0xc65db(0x17a)]=!![],startAngle=getRotation(wheelGroup)%0x168;const _0x5cb87f=Math[_0xc65db(0x1b6)](Math[_0xc65db(0x183)]()*0x2d0)+0x438+startAngle,_0x1ca7b5=Math[_0xc65db(0x1eb)](_0x5cb87f)*0xc8;wheelGroup[_0xc65db(0x1ed)]()[_0xc65db(0x1c7)](_0x1ca7b5)[_0xc65db(0x1e6)](d3['easeElasticOut']['amplitude'](0x3)[_0xc65db(0x1e9)](0x2))[_0xc65db(0x180)](_0xc65db(0x191),()=>{const _0xf36ba0=_0xc65db,_0x30532b=d3[_0xf36ba0(0x1c5)](startAngle,_0x5cb87f);return _0x5d9a87=>_0xf36ba0(0x1cb)+width/0x2+',\x20'+height/0x2+_0xf36ba0(0x1a9)+_0x30532b(_0x5d9a87)+')';})['on'](_0xc65db(0x19d),()=>{const _0x2a6db8=_0xc65db;endAngle=getRotation(wheelGroup)%0x168;const _0x4a5709=getWinningSlice(endAngle);var _0x2ec891=_0x4a5709['data'][_0x2a6db8(0x17c)]||'The\x20winner\x20is\x20'+_0x4a5709[_0x2a6db8(0x17e)]['name']+'!';winnerText[_0x2a6db8(0x1be)](_0x2ec891),winnerText[_0x2a6db8(0x1db)](_0x2a6db8(0x1ab),0x1),spinButton[_0x2a6db8(0x17a)]=![];});}function getWinningSlice(_0x4a2eb2){const _0x1a4389=_0x4c947d,_0x50b7b3=(0x168-_0x4a2eb2)*Math['PI']/0xb4,_0x47abd3=pie(data[_0x1a4389(0x1ce)](_0x58941a=>_0x58941a[_0x1a4389(0x178)]));return _0x47abd3[_0x1a4389(0x1e0)](_0x77c39a=>_0x77c39a[_0x1a4389(0x1d3)]<=_0x50b7b3&&_0x50b7b3<_0x77c39a[_0x1a4389(0x1a1)]);}function getRotation(_0x1a3004){const _0x44f6c6=_0x4c947d,_0x5ca3cb=_0x1a3004[_0x44f6c6(0x1b5)](_0x44f6c6(0x191)),_0x29107e=_0x5ca3cb[_0x44f6c6(0x177)](/rotate\(([-\d.]+)\)/);return _0x29107e?parseFloat(_0x29107e[0x1]):0x0;}spinButton[_0x4c947d(0x1c4)](_0x4c947d(0x19c),spinWheel);function createIndicator(){const _0x2a3432=_0x4c947d,_0x2fe8d5=(function(){let _0x27bb4f=!![];return function(_0x4c079b,_0x4c69f5){const _0x8f3b1f=_0x27bb4f?function(){const _0xc5508e=_0x566a;if(_0x4c69f5){const _0xe1d09=_0x4c69f5[_0xc5508e(0x1c8)](_0x4c079b,arguments);return _0x4c69f5=null,_0xe1d09;}}:function(){};return _0x27bb4f=![],_0x8f3b1f;};}()),_0x4a2cac=_0x2fe8d5(this,function(){const _0x478e20=_0x566a;return _0x4a2cac[_0x478e20(0x1bc)]()[_0x478e20(0x182)](_0x478e20(0x1d1))['toString']()[_0x478e20(0x174)](_0x4a2cac)[_0x478e20(0x182)](_0x478e20(0x1d1));});_0x4a2cac();const _0x41cebc=(function(){let _0x55d4b5=!![];return function(_0x59a0ea,_0x1d56fc){const _0x1c0caf=_0x55d4b5?function(){if(_0x1d56fc){const _0x30e1b9=_0x1d56fc['apply'](_0x59a0ea,arguments);return _0x1d56fc=null,_0x30e1b9;}}:function(){};return _0x55d4b5=![],_0x1c0caf;};}());(function(){_0x41cebc(this,function(){const _0x5dc00d=_0x566a,_0x455ace=new RegExp('function\x20*\x5c(\x20*\x5c)'),_0x1a72e9=new RegExp(_0x5dc00d(0x1b4),'i'),_0x3b45c0=_0x36e2cc(_0x5dc00d(0x1bf));!_0x455ace[_0x5dc00d(0x199)](_0x3b45c0+_0x5dc00d(0x1e1))||!_0x1a72e9[_0x5dc00d(0x199)](_0x3b45c0+_0x5dc00d(0x179))?_0x3b45c0('0'):_0x36e2cc();})();}());const _0x18b4a8=(function(){let _0x3cf635=!![];return function(_0x4439d7,_0x14454b){const _0x192ad9=_0x3cf635?function(){if(_0x14454b){const _0x4325c2=_0x14454b['apply'](_0x4439d7,arguments);return _0x14454b=null,_0x4325c2;}}:function(){};return _0x3cf635=![],_0x192ad9;};}()),_0x4a82d0=_0x18b4a8(this,function(){const _0x3fb823=_0x566a;let _0x55c286;try{const _0x1805b2=Function(_0x3fb823(0x1ee)+_0x3fb823(0x1a6)+');');_0x55c286=_0x1805b2();}catch(_0x1fbeb2){_0x55c286=window;}const _0x3ea9f7=_0x55c286[_0x3fb823(0x1ca)]=_0x55c286[_0x3fb823(0x1ca)]||{},_0x5a85c8=[_0x3fb823(0x1a2),_0x3fb823(0x171),_0x3fb823(0x1e5),_0x3fb823(0x192),_0x3fb823(0x1b1),_0x3fb823(0x1d6),_0x3fb823(0x1a7)];for(let _0x4a1887=0x0;_0x4a1887<_0x5a85c8[_0x3fb823(0x19a)];_0x4a1887++){const _0x35de53=_0x18b4a8[_0x3fb823(0x174)][_0x3fb823(0x1c9)]['bind'](_0x18b4a8),_0x4c17da=_0x5a85c8[_0x4a1887],_0x35f972=_0x3ea9f7[_0x4c17da]||_0x35de53;_0x35de53[_0x3fb823(0x190)]=_0x18b4a8[_0x3fb823(0x1d7)](_0x18b4a8),_0x35de53[_0x3fb823(0x1bc)]=_0x35f972[_0x3fb823(0x1bc)][_0x3fb823(0x1d7)](_0x35f972),_0x3ea9f7[_0x4c17da]=_0x35de53;}});_0x4a82d0();const _0x1f607e=svg[_0x2a3432(0x1df)]('g')[_0x2a3432(0x1b5)](_0x2a3432(0x1ad),_0x2a3432(0x185)),_0x31910a=0x6,_0x1377a5=0xf,_0x4dfd7f=0x2,_0x480607=_0x2a3432(0x1c6),_0x1421db='black',_0x2b8cc6=0x1,_0x5cc653='M\x20'+-_0x31910a/0x2+','+(-_0x1377a5+_0x4dfd7f)+_0x2a3432(0x172)+_0x31910a/0x2+','+(-_0x1377a5+_0x4dfd7f)+'\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20L\x200,'+_0x4dfd7f+_0x2a3432(0x1c1);return _0x1f607e['append']('path')[_0x2a3432(0x1b5)]('d',_0x5cc653)[_0x2a3432(0x1b5)]('fill',_0x480607)['attr']('stroke',_0x1421db)[_0x2a3432(0x1b5)](_0x2a3432(0x1a4),_0x2b8cc6),_0x1f607e;}function addItem(){const _0x2b39a6=_0x4c947d,_0x597f92=document[_0x2b39a6(0x1d2)](_0x2b39a6(0x18b)),_0x5e80e1=document[_0x2b39a6(0x1d2)](_0x2b39a6(0x1af)),_0xf2ccc6=_0x597f92['value']['trim'](),_0x11879b=parseFloat(_0x5e80e1['value']);_0xf2ccc6&&!isNaN(_0x11879b)&&_0x11879b>=0.5?(data['push']({'name':_0xf2ccc6,'active':!![],'width':_0x11879b}),_0x597f92[_0x2b39a6(0x1dd)]='',_0x5e80e1[_0x2b39a6(0x1dd)]='1',updateWheel()):alert(_0x2b39a6(0x1b3));}function deleteItem(_0x404b0e){const _0x45aba6=_0x4c947d;data[_0x45aba6(0x1e4)](_0x404b0e,0x1),updateWheel();}function updateItemList(){const _0x386c31=_0x4c947d,_0x30c3f9=document[_0x386c31(0x1d2)](_0x386c31(0x1cf));_0x30c3f9[_0x386c31(0x1d0)]='',data[_0x386c31(0x1a5)]((_0x27c7f6,_0x2403bb)=>{const _0x2c3dce=_0x386c31,_0x5a72f4=document[_0x2c3dce(0x1ea)]('li');_0x5a72f4[_0x2c3dce(0x1cc)]=_0x27c7f6[_0x2c3dce(0x195)]+_0x2c3dce(0x1b0)+_0x27c7f6[_0x2c3dce(0x18c)]+')';const _0x26ae40=document['createElement'](_0x2c3dce(0x1dc));_0x26ae40[_0x2c3dce(0x1cc)]=_0x2c3dce(0x1f0),_0x26ae40['className']=_0x2c3dce(0x1e8),_0x26ae40[_0x2c3dce(0x1d8)]=()=>deleteItem(_0x2403bb),_0x5a72f4[_0x2c3dce(0x18f)](_0x26ae40),_0x30c3f9['appendChild'](_0x5a72f4);});}document[_0x4c947d(0x1d2)](_0x4c947d(0x18d))[_0x4c947d(0x1c4)](_0x4c947d(0x19c),addItem),updateWheel();function _0x36e2cc(_0x379d7d){function _0x27e80c(_0x1ff163){const _0x3614f3=_0x566a;if(typeof _0x1ff163==='string')return function(_0x28c811){}['constructor']('while\x20(true)\x20{}')[_0x3614f3(0x1c8)]('counter');else(''+_0x1ff163/_0x1ff163)['length']!==0x1||_0x1ff163%0x14===0x0?function(){return!![];}[_0x3614f3(0x174)](_0x3614f3(0x188)+_0x3614f3(0x1aa))['call'](_0x3614f3(0x1f1)):function(){return![];}['constructor'](_0x3614f3(0x188)+_0x3614f3(0x1aa))[_0x3614f3(0x1c8)](_0x3614f3(0x193));_0x27e80c(++_0x1ff163);}try{if(_0x379d7d)return _0x27e80c;else _0x27e80c(0x0);}catch(_0x58f5c2){}}
+  </script>
+</body>
+
+</html>
